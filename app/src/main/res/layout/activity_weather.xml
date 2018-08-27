@@ -47,18 +47,34 @@
                 android:textSize="36sp" />
         </LinearLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvForecast"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="64dp"
-            android:background="@android:color/white"
-            android:paddingEnd="16dp"
-            android:paddingStart="16dp"
+            android:layout_marginTop="48dp"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <TextView
+                android:id="@+id/tvProvidedBy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:padding="8dp"
+                android:text="@string/label_provided_by"
+                android:textSize="10sp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvForecast"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp" />
+        </LinearLayout>
 
     </android.support.constraint.ConstraintLayout>
 

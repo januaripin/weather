@@ -80,9 +80,6 @@ dependencies {
     // picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-    // shimmer
-    implementation 'com.facebook.shimmer:shimmer:0.3.0'
-
     // interceptor
     implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
 

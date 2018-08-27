@@ -10,6 +10,8 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.text.method.LinkMovementMethod
+import android.text.method.MovementMethod
 import android.view.View.GONE
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
@@ -49,6 +51,8 @@ class WeatherActivity : AppCompatActivity(), WeatherView, LocationListener {
         presenter.attachView(this)
 
         locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
+
+        tvProvidedBy.movementMethod = LinkMovementMethod.getInstance()
 
         rvForecast.setHasFixedSize(true)
         rvForecast.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
