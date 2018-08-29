@@ -1,1 +1,1 @@
-include ':app', ':lokasi'
+include ':app'
