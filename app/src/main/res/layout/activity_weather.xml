@@ -18,7 +18,7 @@
             android:layout_marginTop="32dp"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/rvForecast"
+            app:layout_constraintBottom_toTopOf="@+id/layoutForecast"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -48,6 +48,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/layoutForecast"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="48dp"
