@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/januaripin/weather.svg?branch=master)](https://travis-ci.org/januaripin/weather)
+
 # Weather App
 An Android MVP architecture example.
 
