@@ -1,15 +1,43 @@
 language: android
+jdk:
+  - oraclejdk8
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
 android:
   components:
     - tools
-    - tools
     - platform-tools
+    - tools
     - build-tools-27.0.3
     - android-27
-jdk:
-  - oraclejdk8
+    - android-25
+    - add-on
+    - extra
+
 before_install:
-  - yes | sdkmanager "platforms;android-27"
+  - mkdir $ANDROID_HOME/licenses
+  - printf "d56f5187479451eabf01fb78af6dfcb131a6481e" > $ANDROID_HOME/licenses/android-sdk-license
+  - printf "84831b9409646a918e30573bab4c9c91346d8abd" > $ANDROID_HOME/licenses/android-sdk-preview-license
+  - printf "e9acab5b5fbb560a72cfaecce8946896ff6aab9d" > $ANDROID_HOME/licenses/mips-android-sysimage-license
+  - printf "33b6a2b64607f11b759f320ef9dff4ae5c47d97a" > $ANDROID_HOME/licenses/google-gdk-license
+  - sdkmanager --update > update.log
+  - yes | sdkmanager "platforms;android-27" "system-images;android-27;google_apis;x86"
+  - yes | sdkmanager "platforms;android-25" "system-images;android-25;google_apis;armeabi-v7a"
+
+before_script:
+  - echo no | avdmanager create avd --force -n test -k 'system-images;android-25;google_apis;armeabi-v7a'
+  - $ANDROID_HOME/tools/emulator -avd test -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
+
 script:
   - echo "apixuApiKey=yourApiKey" > gradle.properties
-  - ./gradlew build connectedCheck
+  - ./gradlew clean build connectedCheck
